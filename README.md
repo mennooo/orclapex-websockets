@@ -5,9 +5,9 @@ An Oracle PL/SQL package to work with websockets.
 The database cannot transfer data via the [WebSocket](https://en.wikipedia.org/wiki/WebSocket) protocol to APEX users. It must send data via HTTP to a web server which is capable of using websockets.
 
 ## APEX_WEBSOCKETS package
-* [Data Types]()
-* [EMIT_TO_USER procedure](#EMIT_TO_USER procedure)
-* [EMIT_TO_ROOM procedure](#EMIT_TO_ROOM procedure)
+* [Data Types](#Data-Types)
+* [EMIT_TO_USER procedure](#EMIT_TO_USER-procedure)
+* [EMIT_TO_ROOM procedure](#EMIT_TO_ROOM-procedure)
 
 ## Data Types
 
@@ -19,9 +19,12 @@ The database cannot transfer data via the [WebSocket](https://en.wikipedia.org/w
 c_prefix    constant varchar2(20) := 'websocket:';
 c_separator constant varchar2(1)  := ':';
 
+-- Predefined websocket event names
 c_message   constant t_event := c_prefix || c_separator || 'message';
 c_refresh   constant t_event := c_prefix || c_separator || 'refresh';
 ```
+
+You may use custom event names instead of a predefined event name.
 
 ## EMIT_TO_USER procedure
 
@@ -49,8 +52,8 @@ APEX_WEBSOCKETS.EMIT_TO_USER (
 ```sql
 -- Send message to one user to trigger a message event
 -- This will trigger the websocket:message event for all dynamic actions which use this event
-apex_websockets.emit_to_gbrk (
-  p_room  => 'DEMO',
+apex_websockets.emit_to_user (
+  p_user  => 'DEMO',
   p_event => apex_websockets.c_message,
   p_data  => '{"message": "Hello World!"}'
 );
@@ -83,7 +86,10 @@ APEX_WEBSOCKETS.EMIT_TO_ROOM (
 ```sql
 -- Send message to all users in a room to trigger a refresh
 -- for an item/ region which is associated with employee data
-apex_websockets.emit_to_room ('hr:emp:1234', apex_websockets.c_refresh, 'employees');
+apex_websockets.emit_to_room (
+  p_room => 'hr:emp:1234',
+  p_event => apex_websockets.c_refresh
+);
 
 -- Send message to show a message to all users in a room
 apex_websockets.emit_to_room (
