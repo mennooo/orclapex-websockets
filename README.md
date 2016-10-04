@@ -5,9 +5,9 @@ An Oracle PL/SQL package to work with websockets.
 The database cannot transfer data via the [WebSocket](https://en.wikipedia.org/wiki/WebSocket) protocol to APEX users. It must send data via HTTP to a web server which is capable of using websockets.
 
 ## APEX_WEBSOCKETS package
-* [Data Types](#Data-Types)
-* [EMIT_TO_USER procedure](#EMIT_TO_USER-procedure)
-* [EMIT_TO_ROOM procedure](#EMIT_TO_ROOM-procedure)
+* [Data Types](#data-types)
+* [EMIT_TO_USER procedure](#emit_to_user-procedure)
+* [EMIT_TO_ROOM procedure](#emit_to_room-procedure)
 
 ## Data Types
 
