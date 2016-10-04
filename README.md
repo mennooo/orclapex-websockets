@@ -72,10 +72,10 @@ APEX_WEBSOCKETS.EMIT_TO_ROOM (
 
 ### Parameters
 
-| Parameter | Description |
-| - | - |
+Parameter | Description
+--- | ---
 | p_room | Name of the websocket room. A good name for a room would be 'prefix:entity:id'. |
-| p_event| Name of the JavaScript event to trigger in APEX. |
+| p_event| Name of the JavaScript event to trigger in APEX.                     |
 | p_data | Additional data to include in the event. Must be in valid JSON format. The format is checked by [APEX_JSON.PARSE](http://docs.oracle.com/cd/E59726_01/doc.50/e39149/apex_json.htm#AEAPI29747). |
 
 ### Example
