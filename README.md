@@ -1,4 +1,4 @@
-# orclapex-websockets
+# orclapex-websockets (IN DEVELOPMENT!!!)
 
 An Oracle PL/SQL package to work with websockets.
 
